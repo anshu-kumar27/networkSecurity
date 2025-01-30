@@ -76,3 +76,16 @@ exports.deletePassword = async (req, res, next) => {
     next(error);
   }
 };
+
+//get all passwords 
+exports.findallpassword = async (req, res, next) => {
+  try {
+    const passwords = await Password.find();
+    res.status(200).json({
+      message: "all passwords fetched successfully!",
+      data : passwords
+    });
+  } catch (error) {
+    next(error);
+  }
+};
