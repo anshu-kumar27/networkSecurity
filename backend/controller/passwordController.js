@@ -11,10 +11,11 @@ exports.uploadAPassword = async (req, res, next) => {
 
     if (existingPassword) {
       // If it exists, send an error message
-      return res.status(400).json({
-        message:
-          "Password for this service already exists. You can update it instead.",
-      });
+      // return res.status(400).json({
+      //   message:
+      //     "Password for this service already exists. You can update it instead.",
+      // });
+      return next(new ErrorHandler("Password for this service already exists. You can update it instead.",400))
     }
     // If it doesn't exist, create a new password
 
@@ -27,9 +28,10 @@ exports.uploadAPassword = async (req, res, next) => {
       passwordmodel,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     // res.status(500).json({ message: "Error uploading password" });
-    return next(new ErrorHandler("Error uploading password",500));
+    // return next(new ErrorHandler("Error uploading password",500));
+    next(error);
   }
 };
 
@@ -54,7 +56,8 @@ exports.updatePassword = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     // res.status(500).json({ message: "Error updating password" });
-    return next(new ErrorHandler("Error updating password",500));
+    // return next(new ErrorHandler("Error updating password",500));
+    next(error);
   }
 };
 
@@ -75,6 +78,7 @@ exports.deletePassword = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     // res.status(500).json({ message: "Error deleting password" });
-    return next(new ErrorHandler("Error deleting password",500));
+    // return next(new ErrorHandler("Error deleting password",500));
+    next(error);
   }
 };
