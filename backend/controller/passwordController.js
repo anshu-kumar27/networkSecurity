@@ -6,7 +6,7 @@ exports.uploadAPassword = async (req, res, next) => {
   try {
     const { name, password } = req.body;
     if(!name || !password){
-      return next(new ErrorHandler("Either name or password is missing.",404))
+      return next(new ErrorHandler("Either name or password is missing.",404));
     }
 
     // Check if the name already exists
