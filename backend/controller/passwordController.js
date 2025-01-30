@@ -1,3 +1,4 @@
+const ErrorHandler = require("../middleware/ErrorHandler");
 const Password = require("./../model/password");
 
 // this is to control the upload of passswords
@@ -27,7 +28,8 @@ exports.uploadAPassword = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error uploading password" });
+    // res.status(500).json({ message: "Error uploading password" });
+    return next(new ErrorHandler("Error uploading password",500));
   }
 };
 
@@ -51,7 +53,8 @@ exports.updatePassword = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error updating password" });
+    // res.status(500).json({ message: "Error updating password" });
+    return next(new ErrorHandler("Error updating password",500));
   }
 };
 
@@ -71,6 +74,7 @@ exports.deletePassword = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error deleting password" });
+    // res.status(500).json({ message: "Error deleting password" });
+    return next(new ErrorHandler("Error deleting password",500));
   }
 };

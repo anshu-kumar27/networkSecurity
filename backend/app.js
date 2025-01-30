@@ -9,6 +9,9 @@ app.use(cors());
 app.use(express.json()); // important
 
 const passwordRoutes = require("./routes/passwordRoutes");
+const error = require("./middleware/error");
 app.use("/", passwordRoutes);
+
+app.use(error)
 
 module.exports = app;
