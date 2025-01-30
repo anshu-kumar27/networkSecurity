@@ -54,7 +54,7 @@ exports.updatePassword = async (req, res, next) => {
       updatedPassword,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     // res.status(500).json({ message: "Error updating password" });
     // return next(new ErrorHandler("Error updating password",500));
     next(error);
@@ -76,7 +76,7 @@ exports.deletePassword = async (req, res, next) => {
       deletedPassword,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     // res.status(500).json({ message: "Error deleting password" });
     // return next(new ErrorHandler("Error deleting password",500));
     next(error);
